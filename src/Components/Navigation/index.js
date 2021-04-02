@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
-import RoomIcon from '@material-ui/icons/Room';
 import PetsIcon from '@material-ui/icons/Pets';
 
 import Login from './Login'

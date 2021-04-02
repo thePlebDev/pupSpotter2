@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
-const useFormSubmition =()=>{
-  const [state,setState] = useState({username:'',password:''})
+const useFormSubmition =(stateSchema)=>{
+  const [state,setState] = useState(stateSchema)
 
   const handleSubmit =(e)=>{
     e.preventDefault()

@@ -6,7 +6,7 @@ import TextInput from '../../../TextInput'
 
 
 const SignupForm =()=>{
-  const {handleSubmit,handleChange,state} = useFormSubmition()
+  const {handleSubmit,handleChange,state} = useFormSubmition({username:'',password:''})
   return(
     <Form title={'Signup'} handleSubmit={handleSubmit}>
       <TextInput title={"Username"} type={'text'} handleChange={handleChange} name={'username'} value={state.username}/>

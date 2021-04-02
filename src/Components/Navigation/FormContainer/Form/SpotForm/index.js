@@ -2,14 +2,15 @@ import React from 'react';
 import useFormSubmition from '../../../../../Hooks/UseFormSubmition'
 import Form from '../index.js'
 import TextInput from '../../../TextInput'
+import TextInput2 from '../../../TextInput2'
 
 
 const SpotForm =()=>{
-  const {handleSubmit,handleChange,state} = useFormSubmition()
+  const {handleSubmit,handleChange,state} = useFormSubmition({name:"",description:""})
   return(
     <Form title={'Spot'} handleSubmit={handleSubmit}>
-      <TextInput title={"Username"} type={'text'} handleChange={handleChange} name={'username'} value={state.username}/>
-      <TextInput title={"Password"} type={"password"} handleChange={handleChange} name={'password'} value={state.password}/>
+      <TextInput2 title={"Name"} type={'text'} handleChange={handleChange} name={'name'} value={state.name}/>
+      <TextInput2 title={"Description"} type={"text"} handleChange={handleChange} name={'description'} value={state.description}/>
     </Form>
   )
 }
