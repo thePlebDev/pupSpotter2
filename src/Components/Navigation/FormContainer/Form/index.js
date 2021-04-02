@@ -44,18 +44,16 @@ const Title = styled.div`
 
 
 
-const Form =()=>{
+const Form =({title,children,handleChange,handleSubmit})=>{
+
 
   return(
-    <FormContainer autocomplete="off">
+    <FormContainer autocomplete="off" onSubmit={(e)=>handleSubmit(e)}>
       <IconContainer>
         <CloseIcon style={{color:'#289672',fontSize:'30px'}}/>
       </IconContainer>
-      <Title>Login</Title>
-
-      <TextInput title={"Username"} type={'text'}/>
-      <TextInput title={"Password"} type={"password"}/>
-
+      <Title>{title}</Title>
+        {children}
       <Button type="submit">Login</Button>
     </FormContainer>
   )

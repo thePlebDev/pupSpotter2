@@ -34,7 +34,6 @@ const Login = ({show})=>{
       <OpacityContainer>
         <FormContainer/>
         <SubContainer>
-
         </SubContainer>
       </OpacityContainer>
 

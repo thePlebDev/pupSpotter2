@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 
 import Form from './Form'
+import TextInput from '../TextInput'
+import useFormSubmition from '../../../Hooks/UseFormSubmition'
 
 
 const Container = styled.div`
@@ -25,10 +27,13 @@ const Container = styled.div`
 `
 
 const FormContainer = ()=>{
-
+    const {handleSubmit,handleChange,state} = useFormSubmition()
   return(
     <Container>
-        <Form/>
+        <Form title={'login'} handleSubmit={handleSubmit}>
+          <TextInput title={"Username"} type={'text'} handleChange={handleChange} name={'username'} value={state.username}/>
+          <TextInput title={"Password"} type={"password"} handleChange={handleChange} name={'password'} value={state.password}/>
+        </Form>
     </Container>
   )
 }

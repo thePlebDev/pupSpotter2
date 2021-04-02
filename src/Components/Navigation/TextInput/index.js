@@ -1,5 +1,7 @@
-import React,{useState} from 'react';
+import React,{useState,useRef,useEffect} from 'react';
 import styled from 'styled-components';
+
+import useClickDetection from '../../../Hooks/UseClickDetection'
 
 const Input = styled.input`
   border:none;
@@ -33,12 +35,14 @@ const Label = styled.label`
 
 
 
-const TextInput = ({title,type})=>{
-  const [state,setState] = useState(false);
+const TextInput = ({title,type,handleChange,value,name})=>{
+  const node = useRef()
+  const {state} = useClickDetection(node,value)
+
   return(
-    <InputContainer>
-      <Label htmlFor="username" state={state}>{title}</Label>
-      <Input type={type} id="username" name="username" onClick={()=>{setState(true)}} />
+    <InputContainer ref={node}>
+      <Label htmlFor={name} state={state}>{title}</Label>
+      <Input type={type} id={name} name={name} onChange={(e)=>handleChange(e)} value={value}/>
     </InputContainer>
   )
 }
