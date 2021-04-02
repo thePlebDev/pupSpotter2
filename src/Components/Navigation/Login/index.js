@@ -30,7 +30,7 @@ const OpacityContainer = styled.div`
 
 const Login = ({show})=>{
   return(
-    <Container state={true}>
+    <Container state={show}>
       <OpacityContainer>
         <FormContainer/>
         <SubContainer>

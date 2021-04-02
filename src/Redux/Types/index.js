@@ -2,7 +2,10 @@
 const types ={
   showLogin:'LOGIN',
   showSignUp:'SIGNUP',
-  show:'SHOW'
+  showSpot:'SPOT',
+  show:'SHOW',
+  hide:'HIDE',
+
 }
 
 export default types

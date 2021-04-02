@@ -8,6 +8,11 @@ const registerActionCreators =(()=>{
         type:types.show
       }
     },
+    hide(){
+      return{
+        type:types.hide
+      }
+    },
     showLogin(){
       return{
         type:types.showLogin
@@ -15,6 +20,9 @@ const registerActionCreators =(()=>{
     },
     showSignUp(){
       return {type:types.showSignUp}
+    },
+    showSpot(){
+      return{type:types.showSpot}
     }
   }
 

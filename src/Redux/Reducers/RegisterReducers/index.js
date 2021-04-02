@@ -2,8 +2,7 @@ import types from '../../Types'
 
 const initialState ={
   show:false,
-  showLogin:false,
-  showSignUp:false
+  showLogin:types.showLogin,
 }
 
 const registerReducers=(state = initialState,action)=>{
@@ -12,10 +11,16 @@ const registerReducers=(state = initialState,action)=>{
       return{...state,show:true}
 
     case types.showLogin:
-      return{...state,showLogin:true}
+      return{...state,showLogin:types.showLogin}
 
     case types.showSignUp:
-      return{...state,showSignUp:true}
+      return{...state,showLogin:types.showSignUp}
+
+    case types.showSpot:
+      return{...state,showLogin:types.showSpot}
+
+    case types.hide:
+      return{...state,show:false}
 
     default:
       return state

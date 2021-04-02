@@ -1,8 +1,9 @@
-import React,{useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import {connect} from 'react-redux'
 import CloseIcon from '@material-ui/icons/Close';
 
-import TextInput from '../../TextInput'
+import registerActionCreators from '../../../../Redux/ActionCreators/RegisterActionCreators'
 
 const FormContainer = styled.form`
 
@@ -12,8 +13,6 @@ const FormContainer = styled.form`
   justify-content:center;
   flex-direction:column;
 `
-
-
 
 const Button = styled.button`
     width:100px;
@@ -25,13 +24,12 @@ const Button = styled.button`
     font-size:16px;
     margin:0 auto;
     border-radius:4px;
-
 `
-
 const IconContainer = styled.div`
     position:absolute;
     top:5px;
     right:5px;
+    cursor:pointer;
 `
 
 const Title = styled.div`
@@ -39,24 +37,27 @@ const Title = styled.div`
   text-align:center;
   padding-top:5px;
   font-size:20px;
-
 `
 
 
-
-const Form =({title,children,handleChange,handleSubmit})=>{
-
+const Form =({title,children,handleChange,handleSubmit,hide})=>{
 
   return(
     <FormContainer autocomplete="off" onSubmit={(e)=>handleSubmit(e)}>
-      <IconContainer>
+      <IconContainer onClick={()=>hide()}>
         <CloseIcon style={{color:'#289672',fontSize:'30px'}}/>
       </IconContainer>
       <Title>{title}</Title>
         {children}
-      <Button type="submit">Login</Button>
+      <Button type="submit">{title}</Button>
     </FormContainer>
   )
 }
 
-export default Form
+const mapDispatchToProps ={
+  hide:registerActionCreators.hide
+}
+
+const ConnectedForm = connect(null,mapDispatchToProps)(Form)
+
+export default ConnectedForm

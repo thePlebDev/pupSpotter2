@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
-import FaceIcon from '@material-ui/icons/Face';
+import RoomIcon from '@material-ui/icons/Room';
 import PetsIcon from '@material-ui/icons/Pets';
 
 import Login from './Login'
@@ -36,6 +36,7 @@ const Items = styled.li`
   justify-content:center;
   align-items:center;
   margin:0 10px;
+  cursor:pointer;
 `
 
 const TitleContainer = styled.div`
@@ -56,12 +57,20 @@ const Title = styled.div`
 `
 
 
-const Navigation=({show,showLogin})=>{
+const Navigation=({show,showLogin,showSignUp,showSpot})=>{
 
 
   const handleClick=()=>{
     show()
     showLogin()
+  }
+  const handleClickSignup =()=>{
+    show()
+    showSignUp()
+  }
+  const handleClickSpot=()=>{
+    show()
+    showSpot()
   }
 
   return(
@@ -72,14 +81,10 @@ const Navigation=({show,showLogin})=>{
         <Title>Pup Spotter</Title>
         <PetsIcon style={{fontSize:'33px'}} />
     </TitleContainer>
-
-
       <LinksContiner>
-
               <Items onClick={()=>handleClick()}>Login</Items>
-              <Items>Signup</Items>
-              <Items><FaceIcon style={{fontSize:'33px'}}/></Items>
-
+              <Items onClick={()=>handleClickSignup()}>Signup</Items>
+              <Items onClick={()=>handleClickSpot()}>Spot</Items>
       </LinksContiner>
     </Container>
   )
@@ -89,6 +94,7 @@ const mapDispatchToProps={
   show:registerActionCreators.show,
   showLogin:registerActionCreators.showLogin,
   showSignUp:registerActionCreators.showSignUp,
+  showSpot:registerActionCreators.showSpot,
 }
 
 const ConnectedNavigation = connect(null,mapDispatchToProps)(Navigation)
