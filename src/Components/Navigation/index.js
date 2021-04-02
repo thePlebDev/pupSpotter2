@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+
 import FaceIcon from '@material-ui/icons/Face';
 import PetsIcon from '@material-ui/icons/Pets';
+
+import Login from './Login'
+import registerActionCreators from '../../Redux/ActionCreators/RegisterActionCreators'
 
 
 const Container = styled.nav`
@@ -51,13 +56,18 @@ const Title = styled.div`
 `
 
 
+const Navigation=({show,showLogin})=>{
 
-const data =['Login','Signup',<FaceIcon style={{fontSize:'33px'}}/>]
 
-const Navigation=()=>{
+  const handleClick=()=>{
+    show()
+    showLogin()
+  }
 
   return(
     <Container>
+    <Login/>
+
     <TitleContainer>
         <Title>Pup Spotter</Title>
         <PetsIcon style={{fontSize:'33px'}} />
@@ -65,16 +75,22 @@ const Navigation=()=>{
 
 
       <LinksContiner>
-        {
-          data.map((item,index)=>{
-            return(
-              <Items>{item}</Items>
-            )
-          })
-        }
+
+              <Items onClick={()=>handleClick()}>Login</Items>
+              <Items>Signup</Items>
+              <Items><FaceIcon style={{fontSize:'33px'}}/></Items>
+
       </LinksContiner>
     </Container>
   )
 }
 
-export default Navigation
+const mapDispatchToProps={
+  show:registerActionCreators.show,
+  showLogin:registerActionCreators.showLogin,
+  showSignUp:registerActionCreators.showSignUp,
+}
+
+const ConnectedNavigation = connect(null,mapDispatchToProps)(Navigation)
+
+export default ConnectedNavigation
